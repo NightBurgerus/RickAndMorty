@@ -16,6 +16,8 @@
 		4F38F6012ABB566D00D55EDD /* RickAndMortyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6002ABB566D00D55EDD /* RickAndMortyTests.swift */; };
 		4F38F60B2ABB566D00D55EDD /* RickAndMortyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F60A2ABB566D00D55EDD /* RickAndMortyUITests.swift */; };
 		4F38F60D2ABB566D00D55EDD /* RickAndMortyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F60C2ABB566D00D55EDD /* RickAndMortyUITestsLaunchTests.swift */; };
+		4F38F61D2ABB56E300D55EDD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F61C2ABB56E300D55EDD /* BaseViewController.swift */; };
+		4F38F6222ABB572200D55EDD /* CharactersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6212ABB572200D55EDD /* CharactersListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		4F38F6062ABB566D00D55EDD /* RickAndMortyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F38F60A2ABB566D00D55EDD /* RickAndMortyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyUITests.swift; sourceTree = "<group>"; };
 		4F38F60C2ABB566D00D55EDD /* RickAndMortyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4F38F61C2ABB56E300D55EDD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		4F38F6212ABB572200D55EDD /* CharactersListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 		4F38F5E82ABB566600D55EDD /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				4F38F61A2ABB56C100D55EDD /* Modules */,
+				4F38F6192ABB56BB00D55EDD /* Core */,
 				4F38F5E92ABB566600D55EDD /* AppDelegate.swift */,
 				4F38F5EB2ABB566600D55EDD /* SceneDelegate.swift */,
 				4F38F5ED2ABB566600D55EDD /* ViewController.swift */,
@@ -125,6 +131,54 @@
 				4F38F60C2ABB566D00D55EDD /* RickAndMortyUITestsLaunchTests.swift */,
 			);
 			path = RickAndMortyUITests;
+			sourceTree = "<group>";
+		};
+		4F38F6192ABB56BB00D55EDD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F61C2ABB56E300D55EDD /* BaseViewController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4F38F61A2ABB56C100D55EDD /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F61B2ABB56C600D55EDD /* CharactesListModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		4F38F61B2ABB56C600D55EDD /* CharactesListModule */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F6202ABB570C00D55EDD /* Model */,
+				4F38F61F2ABB570800D55EDD /* ViewModel */,
+				4F38F61E2ABB570000D55EDD /* View */,
+			);
+			path = CharactesListModule;
+			sourceTree = "<group>";
+		};
+		4F38F61E2ABB570000D55EDD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4F38F61F2ABB570800D55EDD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4F38F6202ABB570C00D55EDD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F6212ABB572200D55EDD /* CharactersListModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +313,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F38F5EE2ABB566600D55EDD /* ViewController.swift in Sources */,
+				4F38F61D2ABB56E300D55EDD /* BaseViewController.swift in Sources */,
 				4F38F5EA2ABB566600D55EDD /* AppDelegate.swift in Sources */,
+				4F38F6222ABB572200D55EDD /* CharactersListModel.swift in Sources */,
 				4F38F5EC2ABB566600D55EDD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
