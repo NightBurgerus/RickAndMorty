@@ -31,15 +31,15 @@ struct Character: Decodable, Identifiable {
     let image: URL?
     let episode: [URL]
     let url: URL
-    let created: Date
+    let created: String
 }
 
 struct CharacterOrigin: Decodable {
     let name: String
-    let url: URL
+    let url: String
 }
 
 struct CharacterLocation: Decodable {
     let name: String
-    let url: URL
+    let url: String
 }
