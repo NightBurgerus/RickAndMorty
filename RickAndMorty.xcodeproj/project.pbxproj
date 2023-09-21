@@ -32,6 +32,9 @@
 		4F38F63E2ABB67B600D55EDD /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38F63C2ABB67B600D55EDD /* CharacterCell.xib */; };
 		4F38F6412ABB67C600D55EDD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4F38F6402ABB67C600D55EDD /* Kingfisher */; };
 		4F38F6442ABB700200D55EDD /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6432ABB700200D55EDD /* Resources.swift */; };
+		4F38F6472ABC2FFD00D55EDD /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6462ABC2FFD00D55EDD /* Response.swift */; };
+		4F38F6492ABC302A00D55EDD /* LoadingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6482ABC302A00D55EDD /* LoadingError.swift */; };
+		4F38F64B2ABC315600D55EDD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F64A2ABC315600D55EDD /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,9 @@
 		4F38F63B2ABB67B600D55EDD /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		4F38F63C2ABB67B600D55EDD /* CharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
 		4F38F6432ABB700200D55EDD /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		4F38F6462ABC2FFD00D55EDD /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		4F38F6482ABC302A00D55EDD /* LoadingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingError.swift; sourceTree = "<group>"; };
+		4F38F64A2ABC315600D55EDD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,7 @@
 		4F38F6192ABB56BB00D55EDD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4F38F6452ABC2FE300D55EDD /* Network */,
 				4F38F5EB2ABB566600D55EDD /* SceneDelegate.swift */,
 				4F38F5E92ABB566600D55EDD /* AppDelegate.swift */,
 				4F38F61C2ABB56E300D55EDD /* BaseViewController.swift */,
@@ -230,6 +237,16 @@
 				4F38F6432ABB700200D55EDD /* Resources.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4F38F6452ABC2FE300D55EDD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F6462ABC2FFD00D55EDD /* Response.swift */,
+				4F38F6482ABC302A00D55EDD /* LoadingError.swift */,
+				4F38F64A2ABC315600D55EDD /* NetworkService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,8 +398,11 @@
 			files = (
 				4F38F5EE2ABB566600D55EDD /* ViewController.swift in Sources */,
 				4F38F61D2ABB56E300D55EDD /* BaseViewController.swift in Sources */,
+				4F38F6492ABC302A00D55EDD /* LoadingError.swift in Sources */,
 				4F38F5EA2ABB566600D55EDD /* AppDelegate.swift in Sources */,
 				4F38F6262ABB58E700D55EDD /* CharacterListViewModel.swift in Sources */,
+				4F38F6472ABC2FFD00D55EDD /* Response.swift in Sources */,
+				4F38F64B2ABC315600D55EDD /* NetworkService.swift in Sources */,
 				4F38F6392ABB61FD00D55EDD /* Logger.swift in Sources */,
 				4F38F63D2ABB67B600D55EDD /* CharacterCell.swift in Sources */,
 				4F38F6222ABB572200D55EDD /* CharactersListModel.swift in Sources */,
