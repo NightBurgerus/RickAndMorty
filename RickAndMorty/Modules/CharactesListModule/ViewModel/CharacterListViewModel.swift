@@ -25,8 +25,8 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
     private(set) var count = BehaviorRelay<Int>(value: 0)
     private let disposeBag = DisposeBag()
     private let logger = Logger()
-    private var page = 1
-    private var pageCount = 1
+    private(set) var page = 1
+    private(set) var pageCount = 1
     
     private let repository: CharactersRepositoryProtocol
     
@@ -46,11 +46,12 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
     func getCharacters() {
         Task {
             if page > pageCount { return }
-            let response = await repository.getCharacters(page: 1)
+            let response = await repository.getCharacters(page: page)
             switch response {
             case .success(let data):
-                self.characters.accept(data.results)
+                self.characters.accept(self.characters.value + data.results)
                 self.count.accept(data.info.count)
+                self.pageCount = data.info.pages
                 self.page += 1
             case .failure(let error): break
             }

@@ -13,6 +13,7 @@ protocol CharactersRepositoryProtocol {
 
 class CharactersRepository: CharactersRepositoryProtocol {
     private let service: NetworkServiceProtocol
+    private let logger = Logger()
     
     init(service: NetworkServiceProtocol) {
         self.service = service
@@ -20,7 +21,7 @@ class CharactersRepository: CharactersRepositoryProtocol {
     
     func getCharacters(page: Int) async -> Response<CharactersListResponse> {
         await Task {
-            await service.get(url: Links.Character.page(page), decode: CharactersListResponse.self)
+            return await service.get(url: Links.Character.page(page), decode: CharactersListResponse.self)
         }.value
     }
 }
