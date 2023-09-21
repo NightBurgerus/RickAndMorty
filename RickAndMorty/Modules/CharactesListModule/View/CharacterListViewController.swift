@@ -36,6 +36,8 @@ final class CharacterListViewController: UIViewController {
     private func setupUI() {
         charactersListTableView.register(UINib(nibName: Constants.cellIdentifier, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
         setupBindings()
+        
+        (navigationController as? NavigationController)?.setTitleViewWithSearch()
     }
     
     private func setupBindings() {

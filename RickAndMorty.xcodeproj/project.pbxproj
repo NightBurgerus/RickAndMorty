@@ -38,6 +38,7 @@
 		4F38F64D2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F64C2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift */; };
 		4F38F6532ABC377900D55EDD /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6522ABC377900D55EDD /* CharactersRepository.swift */; };
 		4F38F6552ABC3B6800D55EDD /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6542ABC3B6800D55EDD /* Links.swift */; };
+		4F38F6572ABC912B00D55EDD /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6562ABC912B00D55EDD /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		4F38F64C2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceConfiguration.swift; sourceTree = "<group>"; };
 		4F38F6522ABC377900D55EDD /* CharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepository.swift; sourceTree = "<group>"; };
 		4F38F6542ABC3B6800D55EDD /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
+		4F38F6562ABC912B00D55EDD /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				4F38F5E92ABB566600D55EDD /* AppDelegate.swift */,
 				4F38F61C2ABB56E300D55EDD /* BaseViewController.swift */,
 				4F38F6382ABB61FD00D55EDD /* Logger.swift */,
+				4F38F6562ABC912B00D55EDD /* NavigationController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				4F38F6222ABB572200D55EDD /* CharactersListModel.swift in Sources */,
 				4F38F6242ABB588A00D55EDD /* CharacterListViewController.swift in Sources */,
 				4F38F6552ABC3B6800D55EDD /* Links.swift in Sources */,
+				4F38F6572ABC912B00D55EDD /* NavigationController.swift in Sources */,
 				4F38F64D2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift in Sources */,
 				4F38F6442ABB700200D55EDD /* Resources.swift in Sources */,
 				4F38F5EC2ABB566600D55EDD /* SceneDelegate.swift in Sources */,

@@ -32,10 +32,11 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
     
     init(repository: CharactersRepositoryProtocol) {
         self.repository = repository
-        
+    
         searchString
             .asObservable()
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
             .filter({ !$0.isEmpty })
             .subscribe(onNext: { [weak self] newSearch in
                 self?.searchCharacter(newSearch)
