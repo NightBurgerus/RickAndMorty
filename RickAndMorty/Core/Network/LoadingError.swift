@@ -9,6 +9,7 @@ import Foundation
 
 enum LoadingError: Int, Error {
     case invalidURL
+    case dataIsNil
     case decodeError
     case requestTimeOut
     case lostConnection
@@ -18,4 +19,5 @@ enum LoadingError: Int, Error {
     case badRequest = 400
     case methodNotAllowed = 405
     case serverError = 500
+    case unknownError
 }

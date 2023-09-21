@@ -11,7 +11,9 @@ final class CharacterListAssembly: NSObject {
     @IBOutlet var viewController: UIViewController!
     override func awakeFromNib() {
         guard let view = viewController as? CharacterListViewController else { return }
-        let viewModel = CharacterListViewModel()
+        let service = NetworkService()
+        let repository = CharactersRepository(service: service)
+        let viewModel = CharacterListViewModel(repository: repository)
         view.setup(viewModel: viewModel)
     }
 }

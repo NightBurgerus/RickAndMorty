@@ -26,8 +26,13 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
     private let disposeBag = DisposeBag()
     private let logger = Logger()
     private var page = 1
+    private var pageCount = 1
     
-    init() {
+    private let repository: CharactersRepositoryProtocol
+    
+    init(repository: CharactersRepositoryProtocol) {
+        self.repository = repository
+        
         searchString
             .asObservable()
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
@@ -39,15 +44,17 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
     }
     
     func getCharacters() {
-        AF.request("https://rickandmortyapi.com/api/character")
-            .responseDecodable(of: CharactersListResponse.self) { response in
-                guard let characters = response.value else {
-                    self.logger.error("can't decode characters: \(response.error)")
-                    return
-                }
-                self.characters.accept(characters.results)
-                self.count.accept(characters.info.count)
+        Task {
+            if page > pageCount { return }
+            let response = await repository.getCharacters(page: 1)
+            switch response {
+            case .success(let data):
+                self.characters.accept(data.results)
+                self.count.accept(data.info.count)
+                self.page += 1
+            case .failure(let error): break
             }
+        }
     }
     
     func searchCharacter(_ search: String) {

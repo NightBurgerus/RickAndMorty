@@ -35,6 +35,9 @@
 		4F38F6472ABC2FFD00D55EDD /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6462ABC2FFD00D55EDD /* Response.swift */; };
 		4F38F6492ABC302A00D55EDD /* LoadingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6482ABC302A00D55EDD /* LoadingError.swift */; };
 		4F38F64B2ABC315600D55EDD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F64A2ABC315600D55EDD /* NetworkService.swift */; };
+		4F38F64D2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F64C2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift */; };
+		4F38F6532ABC377900D55EDD /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6522ABC377900D55EDD /* CharactersRepository.swift */; };
+		4F38F6552ABC3B6800D55EDD /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6542ABC3B6800D55EDD /* Links.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,9 @@
 		4F38F6462ABC2FFD00D55EDD /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		4F38F6482ABC302A00D55EDD /* LoadingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingError.swift; sourceTree = "<group>"; };
 		4F38F64A2ABC315600D55EDD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		4F38F64C2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceConfiguration.swift; sourceTree = "<group>"; };
+		4F38F6522ABC377900D55EDD /* CharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepository.swift; sourceTree = "<group>"; };
+		4F38F6542ABC3B6800D55EDD /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 		4F38F5E82ABB566600D55EDD /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				4F38F6502ABC374200D55EDD /* Repositories */,
 				4F38F6422ABB6FD600D55EDD /* Resources */,
 				4F38F61A2ABB56C100D55EDD /* Modules */,
 				4F38F6192ABB56BB00D55EDD /* Core */,
@@ -245,8 +252,26 @@
 				4F38F6462ABC2FFD00D55EDD /* Response.swift */,
 				4F38F6482ABC302A00D55EDD /* LoadingError.swift */,
 				4F38F64A2ABC315600D55EDD /* NetworkService.swift */,
+				4F38F64C2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift */,
+				4F38F6542ABC3B6800D55EDD /* Links.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4F38F6502ABC374200D55EDD /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F6512ABC375300D55EDD /* CharactersRepository */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		4F38F6512ABC375300D55EDD /* CharactersRepository */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F6522ABC377900D55EDD /* CharactersRepository.swift */,
+			);
+			path = CharactersRepository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,12 +426,15 @@
 				4F38F6492ABC302A00D55EDD /* LoadingError.swift in Sources */,
 				4F38F5EA2ABB566600D55EDD /* AppDelegate.swift in Sources */,
 				4F38F6262ABB58E700D55EDD /* CharacterListViewModel.swift in Sources */,
+				4F38F6532ABC377900D55EDD /* CharactersRepository.swift in Sources */,
 				4F38F6472ABC2FFD00D55EDD /* Response.swift in Sources */,
 				4F38F64B2ABC315600D55EDD /* NetworkService.swift in Sources */,
 				4F38F6392ABB61FD00D55EDD /* Logger.swift in Sources */,
 				4F38F63D2ABB67B600D55EDD /* CharacterCell.swift in Sources */,
 				4F38F6222ABB572200D55EDD /* CharactersListModel.swift in Sources */,
 				4F38F6242ABB588A00D55EDD /* CharacterListViewController.swift in Sources */,
+				4F38F6552ABC3B6800D55EDD /* Links.swift in Sources */,
+				4F38F64D2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift in Sources */,
 				4F38F6442ABB700200D55EDD /* Resources.swift in Sources */,
 				4F38F5EC2ABB566600D55EDD /* SceneDelegate.swift in Sources */,
 				4F38F6372ABB5F0500D55EDD /* CharacterListAssembly.swift in Sources */,
