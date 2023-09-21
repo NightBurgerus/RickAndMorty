@@ -17,18 +17,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cga-gB-f1J">
-                                <rect key="frame" x="16" y="67" width="361" height="751"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jph-4O-Jwg">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mig-PQ-bwZ">
+                                        <rect key="frame" x="8" y="0.0" width="377" height="715"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <constraints>
+                                    <constraint firstItem="mig-PQ-bwZ" firstAttribute="leading" secondItem="Jph-4O-Jwg" secondAttribute="leading" constant="8" id="26J-aX-xSI"/>
+                                    <constraint firstAttribute="trailing" secondItem="mig-PQ-bwZ" secondAttribute="trailing" constant="8" id="GDp-cx-9Dy"/>
+                                    <constraint firstAttribute="bottom" secondItem="mig-PQ-bwZ" secondAttribute="bottom" id="Sgi-0o-1w7"/>
+                                    <constraint firstItem="mig-PQ-bwZ" firstAttribute="top" secondItem="Jph-4O-Jwg" secondAttribute="top" id="ack-gx-dPR"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sI-Za-ef8">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cga-gB-f1J">
+                                        <rect key="frame" x="8" y="0.0" width="377" height="715"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cga-gB-f1J" secondAttribute="trailing" constant="8" id="BAw-IW-SPL"/>
+                                    <constraint firstAttribute="bottom" secondItem="cga-gB-f1J" secondAttribute="bottom" id="tVK-y5-aVK"/>
+                                    <constraint firstItem="cga-gB-f1J" firstAttribute="top" secondItem="0sI-Za-ef8" secondAttribute="top" id="wbZ-3V-jad"/>
+                                    <constraint firstItem="cga-gB-f1J" firstAttribute="leading" secondItem="0sI-Za-ef8" secondAttribute="leading" constant="8" id="yjX-cC-ECe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jph-4O-Jwg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1dE-a7-201"/>
+                            <constraint firstItem="0sI-Za-ef8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="LWH-Rt-0xe"/>
+                            <constraint firstItem="Jph-4O-Jwg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ULc-a1-02Q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jph-4O-Jwg" secondAttribute="trailing" id="XJd-qZ-N4x"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jph-4O-Jwg" secondAttribute="bottom" id="fBC-cY-SW0"/>
+                            <constraint firstItem="0sI-Za-ef8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k2O-zP-fXr"/>
+                            <constraint firstItem="0sI-Za-ef8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sw8-vK-MpB"/>
+                            <constraint firstAttribute="trailing" secondItem="0sI-Za-ef8" secondAttribute="trailing" id="wbF-eZ-MLB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AHW-bE-uFM"/>
                     <connections>
                         <outlet property="charactersListTableView" destination="cga-gB-f1J" id="BzQ-uB-dbe"/>
+                        <outlet property="listContainer" destination="0sI-Za-ef8" id="A2r-0B-dd5"/>
+                        <outlet property="searchCharactersListTableView" destination="mig-PQ-bwZ" id="gkB-Mp-LXv"/>
+                        <outlet property="searchContainer" destination="Jph-4O-Jwg" id="aCy-R4-k6r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

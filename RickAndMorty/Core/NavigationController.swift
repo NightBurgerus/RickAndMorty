@@ -9,42 +9,33 @@ import Foundation
 import UIKit
 
 final class NavigationController: UINavigationController {
-    func setTitleViewWithSearch() {
-        let textField = UITextField()
-        let backgroundView = UIView()
-        textField.backgroundColor = .blue
-        backgroundView.addSubview(textField)
-        
-        backgroundView.backgroundColor = .red
-
-        navigationBar.addSubview(backgroundView)
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        var leadingConstraint = NSLayoutConstraint(item: textField, attribute: .leading, relatedBy: .equal, toItem: backgroundView, attribute: .leading, multiplier: 1.0, constant: 8)
-        
+    func setTitleViewWithSearch(onChangeText: @escaping(String) -> ()) {
+        let logger = Logger()
+        let titleView = TitleView(title: "Some Title", onChangeText: onChangeText)
+        navigationBar.addSubview(titleView)
+        titleView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            backgroundView.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
-            backgroundView.topAnchor.constraint(equalTo: navigationBar.topAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor),
-            
-//            textField.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: leadingConstraint),
-            leadingConstraint,
-            textField.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -8),
-            textField.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-            textField.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+            titleView.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
+            titleView.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
+            titleView.topAnchor.constraint(equalTo: navigationBar.topAnchor),
+            titleView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor)
         ])
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            UIView.animate(withDuration: 1) {
-                leadingConstraint.isActive = false
-                leadingConstraint = NSLayoutConstraint(item: textField, attribute: .leading, relatedBy: .equal, toItem: backgroundView, attribute: .trailing, multiplier: 1.0, constant: -8)
-                leadingConstraint.isActive = true
-                backgroundView.layoutIfNeeded()
-                textField.layoutIfNeeded()
-            }
-        }
+        titleView.configureView()
     }
     
 }
+
+//let titleView = TitleView(title: "", onChangeText: { _ in })
+//navigationBar.addSubview(titleView)
+//titleView.translatesAutoresizingMaskIntoConstraints = false
+//NSLayoutConstraint.activate([
+//    titleView.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
+//    titleView.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
+//    titleView.topAnchor.constraint(equalTo: navigationBar.topAnchor),
+//    titleView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor)
+//])
+//titleView.configureView()
+//
+//DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//    titleView.closeSearch()
+//}

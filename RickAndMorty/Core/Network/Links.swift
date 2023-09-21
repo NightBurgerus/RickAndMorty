@@ -18,5 +18,9 @@ struct Links {
         static func page(_ page: Int) -> String {
             return charactersBase + "/?page=\(page)"
         }
+        static func all(count: Int) -> String {
+            let ids = Array(1...count)
+            return charactersBase + "/[" + ids.map({ "\($0), " }).reduce("", +).dropLast(2) + "]"
+        }
     }
 }

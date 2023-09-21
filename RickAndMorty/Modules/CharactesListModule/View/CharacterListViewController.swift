@@ -16,6 +16,11 @@ private enum Constants {
 }
 
 final class CharacterListViewController: UIViewController {
+    
+    @IBOutlet weak var searchCharactersListTableView: UITableView!
+    @IBOutlet weak var searchContainer: UIView!
+    
+    @IBOutlet weak var listContainer: UIView!
     @IBOutlet weak var charactersListTableView: UITableView!
     private var logger = Logger()
     
@@ -35,15 +40,27 @@ final class CharacterListViewController: UIViewController {
     
     private func setupUI() {
         charactersListTableView.register(UINib(nibName: Constants.cellIdentifier, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
+        searchCharactersListTableView.register(UINib(nibName: Constants.cellIdentifier, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
         setupBindings()
         
-        (navigationController as? NavigationController)?.setTitleViewWithSearch()
+        (navigationController as? NavigationController)?.setTitleViewWithSearch(onChangeText: { [weak self] searchText in
+            self?.logger.debug(searchText)
+        })
     }
     
     private func setupBindings() {
+        // Общий список персонажей
         viewModel
             .characters
             .bind(to: charactersListTableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: Constants.cellType)) { (_, element, cell) in
+                cell.configure(character: element)
+            }
+            .disposed(by: disposeBag)
+        
+        // Результаты поиска
+        viewModel
+            .searchResults
+            .bind(to: searchCharactersListTableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: Constants.cellType)) { (_, element, cell) in
                 cell.configure(character: element)
             }
             .disposed(by: disposeBag)

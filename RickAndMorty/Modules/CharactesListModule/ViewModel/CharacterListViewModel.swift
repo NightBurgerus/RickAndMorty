@@ -27,6 +27,7 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
     private let logger = Logger()
     private(set) var page = 1
     private(set) var pageCount = 1
+    private var allCharacters = [Character]()
     
     private let repository: CharactersRepositoryProtocol
     
@@ -55,6 +56,18 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
                 self.pageCount = data.info.pages
                 self.page += 1
             case .failure(let error): break
+            }
+        }
+    }
+    
+    func getAllCharacters() {
+        Task {
+            if allCharacters.isEmpty {
+                let response = await repository.getAllCharacters(count: count.value)
+                switch response {
+                case .success(let data): break
+                case .failure(let error): break
+                }
             }
         }
     }

@@ -39,6 +39,7 @@
 		4F38F6532ABC377900D55EDD /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6522ABC377900D55EDD /* CharactersRepository.swift */; };
 		4F38F6552ABC3B6800D55EDD /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6542ABC3B6800D55EDD /* Links.swift */; };
 		4F38F6572ABC912B00D55EDD /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6562ABC912B00D55EDD /* NavigationController.swift */; };
+		4F38F65A2ABCA50400D55EDD /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6592ABCA50400D55EDD /* TitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		4F38F6522ABC377900D55EDD /* CharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepository.swift; sourceTree = "<group>"; };
 		4F38F6542ABC3B6800D55EDD /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		4F38F6562ABC912B00D55EDD /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		4F38F6592ABCA50400D55EDD /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		4F38F5E82ABB566600D55EDD /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				4F38F6582ABCA4F800D55EDD /* Shared */,
 				4F38F6502ABC374200D55EDD /* Repositories */,
 				4F38F6422ABB6FD600D55EDD /* Resources */,
 				4F38F61A2ABB56C100D55EDD /* Modules */,
@@ -275,6 +278,14 @@
 				4F38F6522ABC377900D55EDD /* CharactersRepository.swift */,
 			);
 			path = CharactersRepository;
+			sourceTree = "<group>";
+		};
+		4F38F6582ABCA4F800D55EDD /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F6592ABCA50400D55EDD /* TitleView.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,6 +449,7 @@
 				4F38F6242ABB588A00D55EDD /* CharacterListViewController.swift in Sources */,
 				4F38F6552ABC3B6800D55EDD /* Links.swift in Sources */,
 				4F38F6572ABC912B00D55EDD /* NavigationController.swift in Sources */,
+				4F38F65A2ABCA50400D55EDD /* TitleView.swift in Sources */,
 				4F38F64D2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift in Sources */,
 				4F38F6442ABB700200D55EDD /* Resources.swift in Sources */,
 				4F38F5EC2ABB566600D55EDD /* SceneDelegate.swift in Sources */,
