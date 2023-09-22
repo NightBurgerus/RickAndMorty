@@ -4,3 +4,9 @@
 "character-status" = "Status";
 "character-gender" = "Gender";
 "character-location" = "Location";
+
+"character-species" = "Species";
+"character-type" = "Type";
+"character-origin" = "Origin";
+"character-created" = "Created";
+"character-episodes" = "Episodes";

@@ -36,6 +36,11 @@ final class CharacterListViewController: UIViewController {
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar()
+    }
+    
     func setup(viewModel: CharacterListViewModelProtocol) {
         self.viewModel = viewModel
     }
@@ -45,6 +50,9 @@ final class CharacterListViewController: UIViewController {
         searchCharactersListTableView.register(UINib(nibName: Constants.cellIdentifier, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
         setupBindings()
         
+    }
+    
+    private func setupNavigationBar() {
         // Конфигурация поисковой строки
         guard let navController = (navigationController as? NavigationController) else { return }
         let config = TitleViewConfiguration()
@@ -106,9 +114,28 @@ final class CharacterListViewController: UIViewController {
             .bind(to: searchCountLabel.rx.text)
             .disposed(by: disposeBag)
         
+        charactersListTableView
+            .rx
+            .itemSelected
+            .asObservable()
+            .subscribe(onNext: { [weak self] index in
+                self?.goToCharacter(index: index)
+                self?.charactersListTableView.deselectRow(at: index, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     private func loadData() {
         viewModel.getCharacters()
+    }
+    
+    private func goToCharacter(index: IndexPath) {
+        guard let vc = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "CharacterViewController") as? CharacterViewController else { return }
+        guard index.row < viewModel.characters.value.count else { return }
+        let character = viewModel.characters.value[index.row]
+        vc.setup(character: character)
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
 }

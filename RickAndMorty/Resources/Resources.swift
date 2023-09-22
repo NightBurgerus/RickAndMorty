@@ -27,6 +27,12 @@ struct R {
             static let location = NSLocalizedString("character-location", tableName: tableName, comment: "")
             static let totalCount = NSLocalizedString("characters-count", tableName: tableName, comment: "")
             static let searchCount = NSLocalizedString("search-count", tableName: tableName, comment: "")
+            
+            static let species = NSLocalizedString("character-species", tableName: tableName, comment: "")
+            static let type = NSLocalizedString("character-type", tableName: tableName, comment: "")
+            static let origin = NSLocalizedString("character-origin", tableName: tableName, comment: "")
+            static let created = NSLocalizedString("character-created", tableName: tableName, comment: "")
+            static let episodes = NSLocalizedString("character-episodes", tableName: tableName, comment: "")
         }
         
         struct Genders {

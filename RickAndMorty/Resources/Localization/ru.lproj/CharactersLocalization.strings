@@ -4,3 +4,9 @@
 "character-status" = "Статус";
 "character-gender" = "Пол";
 "character-location" = "Локация";
+
+"character-species" = "Вид";
+"character-type" = "Тип";
+"character-origin" = "Происхождение";
+"character-created" = "Создан";
+"character-episodes" = "Эпизоды";

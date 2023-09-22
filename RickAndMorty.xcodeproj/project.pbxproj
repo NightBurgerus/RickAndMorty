@@ -43,6 +43,7 @@
 		4F38F65F2ABDB1E800D55EDD /* CharactersLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F38F6612ABDB1E800D55EDD /* CharactersLocalization.strings */; };
 		4F38F6672ABDB36B00D55EDD /* GendersLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F38F6692ABDB36B00D55EDD /* GendersLocalization.strings */; };
 		4F38F66D2ABDB3C300D55EDD /* StatusLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F38F66F2ABDB3C300D55EDD /* StatusLocalization.strings */; };
+		4F38F6752ABDBDC700D55EDD /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6742ABDBDC700D55EDD /* CharacterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		4F38F66A2ABDB36D00D55EDD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/GendersLocalization.strings; sourceTree = "<group>"; };
 		4F38F66E2ABDB3C300D55EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StatusLocalization.strings; sourceTree = "<group>"; };
 		4F38F6702ABDB3CB00D55EDD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/StatusLocalization.strings; sourceTree = "<group>"; };
+		4F38F6742ABDBDC700D55EDD /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 		4F38F61A2ABB56C100D55EDD /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4F38F6712ABDBDA800D55EDD /* CharacterModule */,
 				4F38F61B2ABB56C600D55EDD /* CharactesListModule */,
 			);
 			path = Modules;
@@ -308,6 +311,30 @@
 				4F38F66F2ABDB3C300D55EDD /* StatusLocalization.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		4F38F6712ABDBDA800D55EDD /* CharacterModule */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F6732ABDBDB000D55EDD /* ViewModel */,
+				4F38F6722ABDBDAD00D55EDD /* View */,
+			);
+			path = CharacterModule;
+			sourceTree = "<group>";
+		};
+		4F38F6722ABDBDAD00D55EDD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F38F6742ABDBDC700D55EDD /* CharacterViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4F38F6732ABDBDB000D55EDD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,6 +504,7 @@
 				4F38F6572ABC912B00D55EDD /* NavigationController.swift in Sources */,
 				4F38F65A2ABCA50400D55EDD /* TitleView.swift in Sources */,
 				4F38F64D2ABC34ED00D55EDD /* NetworkServiceConfiguration.swift in Sources */,
+				4F38F6752ABDBDC700D55EDD /* CharacterViewController.swift in Sources */,
 				4F38F6442ABB700200D55EDD /* Resources.swift in Sources */,
 				4F38F5EC2ABB566600D55EDD /* SceneDelegate.swift in Sources */,
 				4F38F6372ABB5F0500D55EDD /* CharacterListAssembly.swift in Sources */,
