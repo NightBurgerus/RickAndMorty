@@ -17,6 +17,8 @@ private enum Constants {
 
 final class CharacterListViewController: UIViewController {
     
+    @IBOutlet weak var charactersCountLabel: UILabel!
+    @IBOutlet weak var searchCountLabel: UILabel!
     @IBOutlet weak var searchCharactersListTableView: UITableView!
     @IBOutlet weak var searchContainer: UIView!
     
@@ -43,9 +45,20 @@ final class CharacterListViewController: UIViewController {
         searchCharactersListTableView.register(UINib(nibName: Constants.cellIdentifier, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
         setupBindings()
         
-        (navigationController as? NavigationController)?.setTitleViewWithSearch(onChangeText: { [weak self] searchText in
-            self?.logger.debug(searchText)
-        })
+        // Конфигурация поисковой строки
+        guard let navController = (navigationController as? NavigationController) else { return }
+        let config = TitleViewConfiguration()
+        config.title = "Some Title 2"
+        config.onSearchToggle = { [weak self] isOn in
+            UIView.animate(withDuration: 0.5) {
+                self?.listContainer.alpha = isOn ? 0 : 1
+                self?.searchContainer.alpha = isOn ? 1 : 0
+            }
+        }
+        config.onChangeText = { [weak self] searchText in
+            self?.viewModel.searchString.accept(searchText)
+        }
+        navController.setTitleViewWithSearch(configuration: config)
     }
     
     private func setupBindings() {
@@ -57,12 +70,10 @@ final class CharacterListViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        // Результаты поиска
         viewModel
-            .searchResults
-            .bind(to: searchCharactersListTableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: Constants.cellType)) { (_, element, cell) in
-                cell.configure(character: element)
-            }
+            .count
+            .map { "Total count: \($0)" }
+            .bind(to: charactersCountLabel.rx.text)
             .disposed(by: disposeBag)
         
         charactersListTableView
@@ -79,6 +90,22 @@ final class CharacterListViewController: UIViewController {
             .throttle(.seconds(2), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in self?.viewModel.getCharacters() })
             .disposed(by: disposeBag)
+        
+        // Результаты поиска
+        viewModel
+            .searchResults
+            .bind(to: searchCharactersListTableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: Constants.cellType)) { (_, element, cell) in
+                cell.configure(character: element)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel
+            .searchResults
+            .asObservable()
+            .map({ "Search results: \($0.count)" })
+            .bind(to: searchCountLabel.rx.text)
+            .disposed(by: disposeBag)
+        
     }
     
     private func loadData() {

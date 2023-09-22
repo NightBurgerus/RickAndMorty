@@ -38,7 +38,13 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
             .asObservable()
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .filter({ !$0.isEmpty })
+            .filter({
+                if $0.isEmpty {
+                    self.searchResults.accept(self.allCharacters)
+                    return false
+                }
+                return true
+            })
             .subscribe(onNext: { [weak self] newSearch in
                 self?.searchCharacter(newSearch)
             })
@@ -60,20 +66,29 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
         }
     }
     
-    func getAllCharacters() {
-        Task {
+    private func getAllCharacters() async -> [Character] {
+        await Task {
             if allCharacters.isEmpty {
                 let response = await repository.getAllCharacters(count: count.value)
                 switch response {
-                case .success(let data): break
-                case .failure(let error): break
+                case .success(let data):
+                    return data
+                case .failure(let error):
+                    self.logger.error(error)
+                    return []
                 }
             }
-        }
+            return self.allCharacters
+        }.value
     }
     
-    func searchCharacter(_ search: String) {
-        logger.info(search, tag: 1)
+    private func searchCharacter(_ search: String) {
+        Task {
+            self.allCharacters = await getAllCharacters()
+            let results = allCharacters.filter({ $0.name.lowercased().contains(search.lowercased()) })
+            logger.info(allCharacters.count, results.count)
+            searchResults.accept(results)
+        }
     }
     
     

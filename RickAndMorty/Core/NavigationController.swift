@@ -8,10 +8,11 @@
 import Foundation
 import UIKit
 
+
 final class NavigationController: UINavigationController {
-    func setTitleViewWithSearch(onChangeText: @escaping(String) -> ()) {
-        let logger = Logger()
-        let titleView = TitleView(title: "Some Title", onChangeText: onChangeText)
+
+    func setTitleViewWithSearch(configuration: TitleViewConfiguration = .default) {
+        let titleView = TitleView(configuration: configuration)
         navigationBar.addSubview(titleView)
         titleView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -24,18 +25,3 @@ final class NavigationController: UINavigationController {
     }
     
 }
-
-//let titleView = TitleView(title: "", onChangeText: { _ in })
-//navigationBar.addSubview(titleView)
-//titleView.translatesAutoresizingMaskIntoConstraints = false
-//NSLayoutConstraint.activate([
-//    titleView.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
-//    titleView.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
-//    titleView.topAnchor.constraint(equalTo: navigationBar.topAnchor),
-//    titleView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor)
-//])
-//titleView.configureView()
-//
-//DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//    titleView.closeSearch()
-//}

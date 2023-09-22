@@ -21,32 +21,50 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mig-PQ-bwZ">
-                                        <rect key="frame" x="8" y="0.0" width="377" height="715"/>
+                                        <rect key="frame" x="0.0" y="37" width="393" height="678"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Совпадений:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dr-UP-J2g">
+                                        <rect key="frame" x="8" y="8" width="377" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="mig-PQ-bwZ" firstAttribute="leading" secondItem="Jph-4O-Jwg" secondAttribute="leading" constant="8" id="26J-aX-xSI"/>
-                                    <constraint firstAttribute="trailing" secondItem="mig-PQ-bwZ" secondAttribute="trailing" constant="8" id="GDp-cx-9Dy"/>
-                                    <constraint firstAttribute="bottom" secondItem="mig-PQ-bwZ" secondAttribute="bottom" id="Sgi-0o-1w7"/>
-                                    <constraint firstItem="mig-PQ-bwZ" firstAttribute="top" secondItem="Jph-4O-Jwg" secondAttribute="top" id="ack-gx-dPR"/>
+                                    <constraint firstItem="mig-PQ-bwZ" firstAttribute="top" secondItem="7dr-UP-J2g" secondAttribute="bottom" constant="8" id="1iG-Pm-Tpa"/>
+                                    <constraint firstItem="7dr-UP-J2g" firstAttribute="leading" secondItem="Jph-4O-Jwg" secondAttribute="leading" constant="8" id="8q7-uO-c1R"/>
+                                    <constraint firstAttribute="trailing" secondItem="mig-PQ-bwZ" secondAttribute="trailing" id="JjE-gy-21X"/>
+                                    <constraint firstAttribute="trailing" secondItem="7dr-UP-J2g" secondAttribute="trailing" constant="8" id="KZS-Rj-6o8"/>
+                                    <constraint firstItem="7dr-UP-J2g" firstAttribute="top" secondItem="Jph-4O-Jwg" secondAttribute="top" constant="8" id="VaN-SD-yx8"/>
+                                    <constraint firstAttribute="bottom" secondItem="mig-PQ-bwZ" secondAttribute="bottom" id="g3N-kX-lfI"/>
+                                    <constraint firstItem="mig-PQ-bwZ" firstAttribute="leading" secondItem="Jph-4O-Jwg" secondAttribute="leading" id="zCM-la-hml"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sI-Za-ef8">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cga-gB-f1J">
-                                        <rect key="frame" x="8" y="0.0" width="377" height="715"/>
+                                        <rect key="frame" x="0.0" y="37" width="393" height="678"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Всего персонажей:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mq-4x-bcq">
+                                        <rect key="frame" x="8" y="8" width="377" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="cga-gB-f1J" secondAttribute="trailing" constant="8" id="BAw-IW-SPL"/>
-                                    <constraint firstAttribute="bottom" secondItem="cga-gB-f1J" secondAttribute="bottom" id="tVK-y5-aVK"/>
-                                    <constraint firstItem="cga-gB-f1J" firstAttribute="top" secondItem="0sI-Za-ef8" secondAttribute="top" id="wbZ-3V-jad"/>
-                                    <constraint firstItem="cga-gB-f1J" firstAttribute="leading" secondItem="0sI-Za-ef8" secondAttribute="leading" constant="8" id="yjX-cC-ECe"/>
+                                    <constraint firstItem="4Mq-4x-bcq" firstAttribute="leading" secondItem="0sI-Za-ef8" secondAttribute="leading" constant="8" id="1v2-Gx-APX"/>
+                                    <constraint firstAttribute="bottom" secondItem="cga-gB-f1J" secondAttribute="bottom" id="UgK-qV-yy1"/>
+                                    <constraint firstItem="cga-gB-f1J" firstAttribute="top" secondItem="4Mq-4x-bcq" secondAttribute="bottom" constant="8" id="Xsc-a7-HL5"/>
+                                    <constraint firstItem="cga-gB-f1J" firstAttribute="leading" secondItem="0sI-Za-ef8" secondAttribute="leading" id="hDn-40-1jU"/>
+                                    <constraint firstAttribute="trailing" secondItem="cga-gB-f1J" secondAttribute="trailing" id="hsd-Za-pGX"/>
+                                    <constraint firstItem="4Mq-4x-bcq" firstAttribute="top" secondItem="0sI-Za-ef8" secondAttribute="top" constant="8" id="sP7-RP-z2r"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Mq-4x-bcq" secondAttribute="trailing" constant="8" id="v60-6Y-OPJ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -65,10 +83,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="AHW-bE-uFM"/>
                     <connections>
+                        <outlet property="charactersCountLabel" destination="4Mq-4x-bcq" id="Ly5-HR-9UL"/>
                         <outlet property="charactersListTableView" destination="cga-gB-f1J" id="BzQ-uB-dbe"/>
                         <outlet property="listContainer" destination="0sI-Za-ef8" id="A2r-0B-dd5"/>
                         <outlet property="searchCharactersListTableView" destination="mig-PQ-bwZ" id="gkB-Mp-LXv"/>
                         <outlet property="searchContainer" destination="Jph-4O-Jwg" id="aCy-R4-k6r"/>
+                        <outlet property="searchCountLabel" destination="7dr-UP-J2g" id="LQl-9c-eW2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

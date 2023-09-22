@@ -9,7 +9,7 @@ import Foundation
 
 protocol CharactersRepositoryProtocol {
     func getCharacters(page: Int) async -> Response<CharactersListResponse>
-    func getAllCharacters(count: Int) async -> Response<CharactersListResponse>
+    func getAllCharacters(count: Int) async -> Response<[Character]>
 }
 
 class CharactersRepository: CharactersRepositoryProtocol {
@@ -26,9 +26,9 @@ class CharactersRepository: CharactersRepositoryProtocol {
         }.value
     }
     
-    func getAllCharacters(count: Int) async -> Response<CharactersListResponse> {
+    func getAllCharacters(count: Int) async -> Response<[Character]> {
         await Task {
-            return await service.get(url: Links.Character.all(count: count), decode: CharactersListResponse.self)
+            return await service.get(url: Links.Character.all(count: count), decode: [Character].self)
         }.value
     }
 }

@@ -20,7 +20,7 @@ struct Links {
         }
         static func all(count: Int) -> String {
             let ids = Array(1...count)
-            return charactersBase + "/[" + ids.map({ "\($0), " }).reduce("", +).dropLast(2) + "]"
+            return charactersBase + "/" + ids.map({ "\($0)," }).reduce("", +).dropLast(1)
         }
     }
 }
