@@ -41,8 +41,6 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
             .filter({
                 if $0.isEmpty {
                     self.searchResults.accept(self.allCharacters)
-                    self.logger.info(Set(self.allCharacters.map { $0.status } ))
-                    self.logger.info(Set(self.allCharacters.map { $0.gender } ))
                     return false
                 }
                 return true
@@ -88,7 +86,6 @@ final class CharacterListViewModel: CharacterListViewModelProtocol {
         Task {
             self.allCharacters = await getAllCharacters()
             let results = allCharacters.filter({ $0.name.lowercased().contains(search.lowercased()) })
-            logger.info(allCharacters.count, results.count)
             searchResults.accept(results)
         }
     }

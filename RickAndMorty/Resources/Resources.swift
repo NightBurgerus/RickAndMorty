@@ -11,6 +11,7 @@ private enum Tables: String {
     case characters = "CharactersLocalization"
     case genders = "GendersLocalization"
     case status = "StatusLocalization"
+    case species = "SpeciesLocalization"
 }
 
 struct R {
@@ -48,6 +49,19 @@ struct R {
             static let unknown = NSLocalizedString("unknown", tableName: tableName, comment: "")
             static let alive = NSLocalizedString("alive", tableName: tableName, comment: "")
             static let dead = NSLocalizedString("dead", tableName: tableName, comment: "")
+        }
+        struct Species {
+            private static let tableName = Tables.species.rawValue
+            static let human = NSLocalizedString("human", tableName: tableName, comment: "")
+            static let cronenberg = NSLocalizedString("cronenberg", tableName: tableName, comment: "")
+            static let humanoid = NSLocalizedString("humanoid", tableName: tableName, comment: "")
+            static let animal = NSLocalizedString("animal", tableName: tableName, comment: "")
+            static let disease = NSLocalizedString("disease", tableName: tableName, comment: "")
+            static let mythologicalCreature = NSLocalizedString("mythological-creature", tableName: tableName, comment: "")
+            static let unknown = NSLocalizedString("unknown", tableName: tableName, comment: "")
+            static let robot = NSLocalizedString("robot", tableName: tableName, comment: "")
+            static let poopybutthole = NSLocalizedString("poopybutthole", tableName: tableName, comment: "")
+            static let alien = NSLocalizedString("alien", tableName: tableName, comment: "")
         }
     }
 }

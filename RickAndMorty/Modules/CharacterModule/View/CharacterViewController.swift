@@ -41,12 +41,12 @@ final class CharacterViewController: UIViewController {
         if let url = character.image {
             characterImageView.kf.setImage(with: url)
         }
-        statusLabel.text = getStatus(character)
+        statusLabel.text = getStatus()
         speciesLabel.text = getSpecies()
         typeLabel.text = getType()
-        genderLabel.text = getGender(character)
+        genderLabel.text = getGender()
         originLabel.text = getOrigin()
-        locationLabel.text = getLocation(character)
+        locationLabel.text = getLocation()
         createdLabel.text = getCreated()
         episodesLabel.text = getEpisodes()
     }
@@ -56,8 +56,7 @@ final class CharacterViewController: UIViewController {
 private extension CharacterViewController {
     
     private func getEpisodes() -> String {
-        var result = "\(R.Strings.Characters.episodes): "
-        return result
+        return "\(R.Strings.Characters.episodes): "
     }
     
     private func getCreated() -> String {
@@ -87,12 +86,22 @@ private extension CharacterViewController {
     private func getSpecies() -> String {
         var result = "\(R.Strings.Characters.species): "
         
-        result += character.species
+        switch character.species.lowercased() {
+        case "human": result += R.Strings.Species.human
+        case "cronenberg": result += R.Strings.Species.cronenberg
+        case "humanoid": result += R.Strings.Species.humanoid
+        case "animal": result += R.Strings.Species.animal
+        case "mythological creature": result += R.Strings.Species.mythologicalCreature
+        case "robot": result += R.Strings.Species.robot
+        case "poopybutthole": result += R.Strings.Species.poopybutthole
+        case "alien": result += R.Strings.Species.alien
+        default: result += R.Strings.Species.unknown
+        }
         
         return result
     }
     
-    private func getStatus(_ character: Character) -> String {
+    private func getStatus() -> String {
         var result = "\(R.Strings.Characters.status): "
         switch character.status.lowercased() {
         case "alive": result += R.Strings.Status.alive
@@ -102,7 +111,7 @@ private extension CharacterViewController {
         return result
     }
     
-    private func getGender(_ character: Character) -> String {
+    private func getGender() -> String {
         var result = "\(R.Strings.Characters.gender): "
         switch character.gender.lowercased() {
         case "female": result +=  R.Strings.Genders.female
@@ -113,7 +122,7 @@ private extension CharacterViewController {
         return result
     }
     
-    private func getLocation(_ character: Character) -> String {
+    private func getLocation() -> String {
         return "\(R.Strings.Characters.location): \(character.location.name)"
     }
 }
