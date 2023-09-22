@@ -48,7 +48,7 @@ final class CharacterListViewController: UIViewController {
         // Конфигурация поисковой строки
         guard let navController = (navigationController as? NavigationController) else { return }
         let config = TitleViewConfiguration()
-        config.title = "Some Title 2"
+        config.title = R.Strings.Characters.title
         config.onSearchToggle = { [weak self] isOn in
             UIView.animate(withDuration: 0.5) {
                 self?.listContainer.alpha = isOn ? 0 : 1
@@ -72,7 +72,7 @@ final class CharacterListViewController: UIViewController {
         
         viewModel
             .count
-            .map { "Total count: \($0)" }
+            .map { "\(R.Strings.Characters.totalCount): \($0)" }
             .bind(to: charactersCountLabel.rx.text)
             .disposed(by: disposeBag)
         
@@ -102,7 +102,7 @@ final class CharacterListViewController: UIViewController {
         viewModel
             .searchResults
             .asObservable()
-            .map({ "Search results: \($0.count)" })
+            .map({ "\(R.Strings.Characters.status): \($0.count)" })
             .bind(to: searchCountLabel.rx.text)
             .disposed(by: disposeBag)
         
