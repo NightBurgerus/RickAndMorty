@@ -7,6 +7,12 @@
 
 import UIKit
 import Kingfisher
+import RxCocoa
+import RxSwift
+
+private enum Constants: String {
+    case cellIdentifier = "EpisodeCell"
+}
 
 final class CharacterViewController: UIViewController {
     @IBOutlet weak var characterImageView: UIImageView!
@@ -18,9 +24,12 @@ final class CharacterViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var episodesLabel: UILabel!
-    @IBOutlet weak var episodesTableView: UITableView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var infoStack: UIStackView!
     
     private var character: Character!
+    private let disposeBag = DisposeBag()
+    private let logger = Logger()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +58,14 @@ final class CharacterViewController: UIViewController {
         locationLabel.text = getLocation()
         createdLabel.text = getCreated()
         episodesLabel.text = getEpisodes()
+        
+        setupEpisodes()
+    }
+    
+    private func setupEpisodes() {
+        for episode in character.episode {
+            addEpisodeView(episode)
+        }
     }
 
 }
@@ -124,5 +141,40 @@ private extension CharacterViewController {
     
     private func getLocation() -> String {
         return "\(R.Strings.Characters.location): \(character.location.name)"
+    }
+}
+
+private extension CharacterViewController {
+    func addEpisodeView(_ episodeName: URL) {
+        let episode = UIView()
+        let nameLabel = UILabel()
+        let arrow = UIImageView(image: UIImage(named: "no-image-rick")!)
+        
+        nameLabel.text = "\(episodeName.absoluteString.dropFirst(10))"
+        
+        episode.addSubview(nameLabel)
+        episode.addSubview(arrow)
+        
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        arrow.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            nameLabel.leadingAnchor.constraint(equalTo: episode.leadingAnchor, constant: 8),
+            nameLabel.centerYAnchor.constraint(equalTo: episode.centerYAnchor),
+            arrow.trailingAnchor.constraint(equalTo: episode.trailingAnchor, constant: -8),
+            arrow.centerYAnchor.constraint(equalTo: episode.centerYAnchor),
+            arrow.heightAnchor.constraint(equalToConstant: 20),
+            arrow.widthAnchor.constraint(equalToConstant: 20),
+            nameLabel.trailingAnchor.constraint(equalTo: arrow.leadingAnchor, constant: -8)
+        ])
+        
+        infoStack.addArrangedSubview(episode)
+        
+        episode.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            episode.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            episode.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            episode.heightAnchor.constraint(equalToConstant: 30)
+        ])
     }
 }
