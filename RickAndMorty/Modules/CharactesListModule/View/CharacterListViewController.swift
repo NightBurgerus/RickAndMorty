@@ -55,18 +55,27 @@ final class CharacterListViewController: UIViewController {
     private func setupNavigationBar() {
         // Конфигурация поисковой строки
         guard let navController = (navigationController as? NavigationController) else { return }
-        let config = TitleViewConfiguration()
-        config.title = R.Strings.Characters.title
-        config.onSearchToggle = { [weak self] isOn in
-            UIView.animate(withDuration: 0.5) {
-                self?.listContainer.alpha = isOn ? 0 : 1
-                self?.searchContainer.alpha = isOn ? 1 : 0
-            }
-        }
-        config.onChangeText = { [weak self] searchText in
-            self?.viewModel.searchString.accept(searchText)
-        }
-        navController.setTitleViewWithSearch(configuration: config)
+
+        navController.setTitleViewWithSearch(title: R.Strings.Characters.title)
+        
+        navController
+            .titleView?
+            .searchIsOpen
+            .subscribe(onNext: { [weak self] isOn in
+                UIView.animate(withDuration: 0.5) {
+                    self?.listContainer.alpha = isOn ? 0 : 1
+                    self?.searchContainer.alpha = isOn ? 1 : 0
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        navController
+            .titleView?
+            .searchText
+            .subscribe(onNext: { [weak self] searchText in
+                self?.viewModel.searchString.accept(searchText)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupBindings() {
@@ -119,21 +128,29 @@ final class CharacterListViewController: UIViewController {
             .itemSelected
             .asObservable()
             .subscribe(onNext: { [weak self] index in
-                self?.goToCharacter(index: index)
+                guard let character = self?.viewModel.characters.value[index.row] else { return }
+                self?.goToCharacter(character: character)
                 self?.charactersListTableView.deselectRow(at: index, animated: true)
             })
             .disposed(by: disposeBag)
-        
+        searchCharactersListTableView
+            .rx
+            .itemSelected
+            .asObservable()
+            .subscribe(onNext: { [weak self] index in
+                guard let character = self?.viewModel.searchResults.value[index.row] else { return }
+                self?.goToCharacter(character: character)
+                self?.searchCharactersListTableView.deselectRow(at: index, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func loadData() {
         viewModel.getCharacters()
     }
     
-    private func goToCharacter(index: IndexPath) {
+    private func goToCharacter(character: Character) {
         guard let vc = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "CharacterViewController") as? CharacterViewController else { return }
-        guard index.row < viewModel.characters.value.count else { return }
-        let character = viewModel.characters.value[index.row]
         vc.setup(character: character)
         navigationController?.pushViewController(vc, animated: true)
         

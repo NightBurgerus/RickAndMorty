@@ -12,6 +12,7 @@ import UIKit
 final class NavigationController: UINavigationController {
     var titleView: TitleView?
     var titleLabel: UILabel?
+    private let logger = Logger()
     
     func setTitle(_ title: String) {
         titleView?.alpha = 0
@@ -30,10 +31,11 @@ final class NavigationController: UINavigationController {
         titleLabel!.textColor = R.Colors.appForeground
     }
 
-    func setTitleViewWithSearch(configuration: TitleViewConfiguration = .default) {
+    func setTitleViewWithSearch(title: String) {
         titleLabel?.alpha = 0
         if titleView == nil {
-            titleView = TitleView(configuration: configuration)
+            logger.debug("title view init")
+            titleView = TitleView(title: title)
             navigationBar.addSubview(titleView!)
         }
         
@@ -46,7 +48,11 @@ final class NavigationController: UINavigationController {
             titleView!.topAnchor.constraint(equalTo: navigationBar.topAnchor),
             titleView!.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor)
         ])
-        titleView!.configureView()
+//        titleView!.configureView()
+    }
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        super.pushViewController(viewController, animated: animated)
     }
     
 }

@@ -6,28 +6,25 @@
 //
 
 import UIKit
-
-final class TitleViewConfiguration {
-    static let `default` = TitleViewConfiguration()
-    var title: String = ""
-    var animationDuration: Double = 0.5
-    var onChangeText: ((String) -> ())?
-    var onSearchToggle: ((Bool) -> ())?
-}
+import RxCocoa
+import RxSwift
 
 final class TitleView: UIView {
-    private let configuration: TitleViewConfiguration
     private var textField = UITextField()
     private var leadingConstraint: NSLayoutConstraint!
     private var leadingConstant: CGFloat = 40
     private let trailingConstant: CGFloat = -16
-    private var searchIsOpen = false
+    private(set) var searchIsOpen = BehaviorRelay<Bool>(value: false)
+    private(set) var searchText = BehaviorRelay<String>(value: "")
     
     private let label = UILabel()
+    private var title: String!
+    private let animationDuration = 0.5
     
-    init(configuration: TitleViewConfiguration = .default) {
-        self.configuration = configuration
+    init(title: String) {
+        self.title = title
         super.init(frame: .zero)
+        configureView()
     }
     
     required init?(coder: NSCoder) {
@@ -42,7 +39,7 @@ final class TitleView: UIView {
     }
     
     private func configureTitle() {
-        label.text = configuration.title
+        label.text = title
         label.font = .systemFont(ofSize: 22, weight: .bold)
         addSubview(label)
         
@@ -75,13 +72,12 @@ final class TitleView: UIView {
     }
     
     @objc private func toggleSearch() {
-        if searchIsOpen {
+        if searchIsOpen.value {
             closeSearch()
         } else {
             openSearch()
         }
-        searchIsOpen.toggle()
-        configuration.onSearchToggle?(searchIsOpen)
+        searchIsOpen.accept(!searchIsOpen.value)
     }
     
     private func configureTextField() {
@@ -111,10 +107,10 @@ final class TitleView: UIView {
     }
     
     func openSearch() {
-        UIView.animate(withDuration: configuration.animationDuration / 2) {
+        UIView.animate(withDuration: animationDuration / 2) {
             self.label.alpha = 0
         }
-        UIView.animate(withDuration: configuration.animationDuration, delay: 0, options: .curveEaseInOut) {
+        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut) {
             self.leadingConstraint.isActive = false
             self.leadingConstraint = NSLayoutConstraint(item: self.textField, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: self.leadingConstant)
             self.leadingConstraint.isActive = true
@@ -125,10 +121,10 @@ final class TitleView: UIView {
     
     func closeSearch() {
         self.textField.resignFirstResponder()
-        UIView.animate(withDuration: configuration.animationDuration / 2, delay: configuration.animationDuration / 2) {
+        UIView.animate(withDuration: animationDuration / 2, delay: animationDuration / 2) {
             self.label.alpha = 1
         }
-        UIView.animate(withDuration: configuration.animationDuration, delay: 0, options: .curveEaseInOut) {
+        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut) {
             self.leadingConstraint.isActive = false
             self.leadingConstraint = NSLayoutConstraint(item: self.textField, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: self.trailingConstant)
             self.leadingConstraint.isActive = true
@@ -139,6 +135,6 @@ final class TitleView: UIView {
 
 extension TitleView: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        self.configuration.onChangeText?(textField.text ?? "")
+        searchText.accept(textField.text ?? "")
     }
 }
