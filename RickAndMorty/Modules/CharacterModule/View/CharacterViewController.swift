@@ -24,7 +24,7 @@ final class CharacterViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var episodesLabel: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: CustomScrollView!
     @IBOutlet weak var infoStack: UIStackView!
     
     private var character: Character!
@@ -60,6 +60,14 @@ final class CharacterViewController: UIViewController {
         episodesLabel.text = getEpisodes()
         
         setupEpisodes()
+        
+        scrollView
+            .rx
+            .contentOffset
+            .subscribe(onNext: { [weak self] offset in
+            })
+            .disposed(by: disposeBag)
+            
     }
     
     private func setupEpisodes() {

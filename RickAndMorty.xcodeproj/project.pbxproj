@@ -45,6 +45,7 @@
 		4F38F66D2ABDB3C300D55EDD /* StatusLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F38F66F2ABDB3C300D55EDD /* StatusLocalization.strings */; };
 		4F38F6752ABDBDC700D55EDD /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F6742ABDBDC700D55EDD /* CharacterViewController.swift */; };
 		4F38F6782ABDC6FE00D55EDD /* SpeciesLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F38F67A2ABDC6FE00D55EDD /* SpeciesLocalization.strings */; };
+		4F7926DD2ABEDD70007ADE82 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7926DC2ABEDD70007ADE82 /* CustomScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		4F38F6742ABDBDC700D55EDD /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		4F38F6792ABDC6FE00D55EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SpeciesLocalization.strings; sourceTree = "<group>"; };
 		4F38F67B2ABDC6FF00D55EDD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SpeciesLocalization.strings; sourceTree = "<group>"; };
+		4F7926DC2ABEDD70007ADE82 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				4F38F6592ABCA50400D55EDD /* TitleView.swift */,
+				4F7926DC2ABEDD70007ADE82 /* CustomScrollView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 			files = (
 				4F38F5EE2ABB566600D55EDD /* ViewController.swift in Sources */,
 				4F38F61D2ABB56E300D55EDD /* BaseViewController.swift in Sources */,
+				4F7926DD2ABEDD70007ADE82 /* CustomScrollView.swift in Sources */,
 				4F38F6492ABC302A00D55EDD /* LoadingError.swift in Sources */,
 				4F38F5EA2ABB566600D55EDD /* AppDelegate.swift in Sources */,
 				4F38F6262ABB58E700D55EDD /* CharacterListViewModel.swift in Sources */,

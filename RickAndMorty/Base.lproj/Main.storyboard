@@ -114,8 +114,8 @@
                                     <constraint firstAttribute="width" secondItem="cUQ-Ez-ALb" secondAttribute="height" multiplier="16:12" id="JGi-D1-9sY"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8E-zM-8FD">
-                                <rect key="frame" x="8" y="350" width="377" height="502"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8E-zM-8FD" customClass="CustomScrollView" customModule="RickAndMorty" customModuleProvider="target">
+                                <rect key="frame" x="8" y="349.66666666666674" width="377" height="502.33333333333326"/>
                                 <subviews>
                                     <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HE3-3a-JBb">
                                         <rect key="frame" x="0.0" y="0.0" width="69.333333333333329" height="232.66666666666666"/>
@@ -133,7 +133,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0a4-c3-0nN">
-                                                <rect key="frame" x="0.0" y="60.666666666666693" width="69.333333333333329" height="20.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="60.666666666666636" width="69.333333333333329" height="20.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -151,19 +151,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-je-ac3">
-                                                <rect key="frame" x="0.0" y="151.66666666666669" width="69.333333333333329" height="20.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="151.66666666666663" width="69.333333333333329" height="20.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smx-ti-zmY">
-                                                <rect key="frame" x="0.0" y="182" width="69.333333333333329" height="20.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="181.99999999999994" width="69.333333333333329" height="20.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmt-cs-sJ4">
-                                                <rect key="frame" x="0.0" y="212.33333333333337" width="69.333333333333329" height="20.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="212.33333333333331" width="69.333333333333329" height="20.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -189,7 +189,7 @@
                             <constraint firstItem="cUQ-Ez-ALb" firstAttribute="leading" secondItem="W9Z-W3-uzP" secondAttribute="leading" constant="8" id="PKd-zP-aZq"/>
                             <constraint firstItem="W9Z-W3-uzP" firstAttribute="trailing" secondItem="f8E-zM-8FD" secondAttribute="trailing" constant="8" id="SNP-HJ-VkK"/>
                             <constraint firstItem="f8E-zM-8FD" firstAttribute="bottom" secondItem="W9Z-W3-uzP" secondAttribute="bottom" constant="34" id="Tk2-Qq-LI4"/>
-                            <constraint firstItem="f8E-zM-8FD" firstAttribute="top" secondItem="cUQ-Ez-ALb" secondAttribute="bottom" constant="8.3333333333333144" id="UCs-Zt-I9F"/>
+                            <constraint firstItem="f8E-zM-8FD" firstAttribute="top" secondItem="cUQ-Ez-ALb" secondAttribute="bottom" constant="8" id="UCs-Zt-I9F"/>
                             <constraint firstItem="cUQ-Ez-ALb" firstAttribute="top" secondItem="W9Z-W3-uzP" secondAttribute="top" id="jEZ-Ez-SsM"/>
                         </constraints>
                     </view>
