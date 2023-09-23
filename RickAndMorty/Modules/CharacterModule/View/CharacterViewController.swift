@@ -30,6 +30,7 @@ final class CharacterViewController: UIViewController {
     private var character: Character!
     private let disposeBag = DisposeBag()
     private let logger = Logger()
+    private let fontSize = 18.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +51,14 @@ final class CharacterViewController: UIViewController {
         if let url = character.image {
             characterImageView.kf.setImage(with: url)
         }
-        statusLabel.text = getStatus()
-        speciesLabel.text = getSpecies()
-        typeLabel.text = getType()
-        genderLabel.text = getGender()
-        originLabel.text = getOrigin()
-        locationLabel.text = getLocation()
-        createdLabel.text = getCreated()
-        episodesLabel.text = getEpisodes()
+        statusLabel.attributedText   = getStatus()
+        speciesLabel.attributedText  = getSpecies()
+        typeLabel.attributedText     = getType()
+        genderLabel.attributedText   = getGender()
+        originLabel.attributedText   = getOrigin()
+        locationLabel.attributedText = getLocation()
+        createdLabel.attributedText  = getCreated()
+        episodesLabel.attributedText = getEpisodes()
         
         setupEpisodes()
         scrollView.layoutIfNeeded()
@@ -89,75 +90,97 @@ final class CharacterViewController: UIViewController {
 
 private extension CharacterViewController {
     
-    private func getEpisodes() -> String {
-        return "\(R.Strings.Characters.episodes): "
+    private func getEpisodes() -> NSAttributedString {
+        return NSAttributedString(string: "\(R.Strings.Characters.episodes):", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .bold)])
     }
     
-    private func getCreated() -> String {
-        var result = "\(R.Strings.Characters.created): "
+    private func getCreated() -> NSAttributedString {
+        let created = NSMutableAttributedString(string: "\(R.Strings.Characters.created): ", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .bold)])
         
-        result += character.created
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date = dateFormatter.date(from: character.created) {
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+            created.append(NSAttributedString(string: dateFormatter.string(from: date), attributes: [.font: UIFont.systemFont(ofSize: fontSize)]))
+        } else {
+            created.append(NSAttributedString(string: character.created, attributes: [.font: UIFont.systemFont(ofSize: fontSize)]))
+        }
+        
+        return created
+    }
+    
+    private func getOrigin() -> NSAttributedString {
+        let origin = NSMutableAttributedString(string: "\(R.Strings.Characters.origin): ", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .bold)])
+        origin.append(NSAttributedString(string: character.origin.name, attributes: [.font: UIFont.systemFont(ofSize: fontSize)]))
+        
+        return origin
+    }
+    
+    private func getType() -> NSAttributedString {
+        let type = NSAttributedString(string: "\(R.Strings.Characters.type): ", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .bold)])
+        let typeValue = NSAttributedString(string: character.type, attributes: [.font: UIFont.systemFont(ofSize: fontSize)])
+        let result = NSMutableAttributedString(attributedString: type)
+        result.append(typeValue)
         
         return result
     }
     
-    private func getOrigin() -> String {
-        var result = "\(R.Strings.Characters.origin): "
+    private func getSpecies() -> NSAttributedString {
+        let species = NSAttributedString(string: "\(R.Strings.Characters.species): ", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .bold)])
         
-        result += character.origin.name
-        
-        return result
-    }
-    
-    private func getType() -> String {
-        var result = "\(R.Strings.Characters.type): "
-        
-        result += character.type
-        
-        return result
-    }
-    
-    private func getSpecies() -> String {
-        var result = "\(R.Strings.Characters.species): "
-        
+        let curSpecies: String!
         switch character.species.lowercased() {
-        case "human": result += R.Strings.Species.human
-        case "cronenberg": result += R.Strings.Species.cronenberg
-        case "humanoid": result += R.Strings.Species.humanoid
-        case "animal": result += R.Strings.Species.animal
-        case "mythological creature": result += R.Strings.Species.mythologicalCreature
-        case "robot": result += R.Strings.Species.robot
-        case "poopybutthole": result += R.Strings.Species.poopybutthole
-        case "alien": result += R.Strings.Species.alien
-        default: result += R.Strings.Species.unknown
+        case "human": curSpecies = R.Strings.Species.human
+        case "cronenberg": curSpecies = R.Strings.Species.cronenberg
+        case "humanoid": curSpecies = R.Strings.Species.humanoid
+        case "animal": curSpecies = R.Strings.Species.animal
+        case "mythological creature": curSpecies = R.Strings.Species.mythologicalCreature
+        case "robot": curSpecies = R.Strings.Species.robot
+        case "poopybutthole": curSpecies = R.Strings.Species.poopybutthole
+        case "alien": curSpecies = R.Strings.Species.alien
+        default: curSpecies = R.Strings.Species.unknown
         }
+        let attrCurSpecies = NSAttributedString(string: curSpecies, attributes: [.font: UIFont.systemFont(ofSize: fontSize)])
+        let result = NSMutableAttributedString(attributedString: species)
+        result.append(attrCurSpecies)
+        return result
+    }
+    
+    private func getStatus() -> NSAttributedString {
+        let status = NSAttributedString(string: "\(R.Strings.Characters.status): ", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .bold)])
         
-        return result
-    }
-    
-    private func getStatus() -> String {
-        var result = "\(R.Strings.Characters.status): "
+        let curStatus: String!
         switch character.status.lowercased() {
-        case "alive": result += R.Strings.Status.alive
-        case "dead": result +=  R.Strings.Status.dead
-        default: result +=  R.Strings.Status.unknown
+        case "alive": curStatus = R.Strings.Status.alive
+        case "dead": curStatus =  R.Strings.Status.dead
+        default: curStatus = R.Strings.Status.unknown
         }
+        let attrCurStatus = NSAttributedString(string: curStatus, attributes: [.font: UIFont.systemFont(ofSize: fontSize)])
+        let result = NSMutableAttributedString(attributedString: status)
+        result.append(attrCurStatus)
         return result
     }
     
-    private func getGender() -> String {
-        var result = "\(R.Strings.Characters.gender): "
+    private func getGender() -> NSAttributedString {
+        let gender = NSMutableAttributedString(string: "\(R.Strings.Characters.gender): ", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .bold)])
+        
+        let genderValue: String!
         switch character.gender.lowercased() {
-        case "female": result +=  R.Strings.Genders.female
-        case "genderless": result +=  R.Strings.Genders.genderless
-        case "male": result +=  R.Strings.Genders.male
-        default: result +=  R.Strings.Genders.unknown
+        case "female": genderValue =  R.Strings.Genders.female
+        case "genderless": genderValue =  R.Strings.Genders.genderless
+        case "male": genderValue =  R.Strings.Genders.male
+        default: genderValue =  R.Strings.Genders.unknown
         }
-        return result
+        gender.append(NSAttributedString(string: genderValue, attributes: [.font: UIFont.systemFont(ofSize: fontSize)]))
+        
+        return gender
     }
     
-    private func getLocation() -> String {
-        return "\(R.Strings.Characters.location): \(character.location.name)"
+    private func getLocation() -> NSAttributedString {
+        let location = NSMutableAttributedString(string: "\(R.Strings.Characters.location): ", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .bold)])
+        location.append(NSAttributedString(string: character.location.name, attributes: [.font: UIFont.systemFont(ofSize: fontSize)]))
+        return location
     }
 }
 
@@ -165,9 +188,14 @@ private extension CharacterViewController {
     func addEpisodeView(_ episodeName: URL) {
         let episode = UIView()
         let nameLabel = UILabel()
-        let arrow = UIImageView(image: UIImage(named: "no-image-rick")!)
-        
-        nameLabel.text = "\(episodeName.absoluteString.dropFirst(10))"
+        let arrow = UIImageView(image: UIImage(systemName: "arrow.right")!)
+        arrow.tintColor = R.Colors.appForeground
+        if let lastSlash = episodeName.absoluteString.lastIndex(of: "/") {
+            let s = episodeName.absoluteString
+            nameLabel.text = "#" + String(s[s.index(lastSlash, offsetBy: 1)..<s.endIndex])
+        } else {
+            nameLabel.text = "\(episodeName.absoluteString.dropFirst(20))"
+        }
         
         episode.addSubview(nameLabel)
         episode.addSubview(arrow)
@@ -180,7 +208,7 @@ private extension CharacterViewController {
             nameLabel.centerYAnchor.constraint(equalTo: episode.centerYAnchor),
             arrow.trailingAnchor.constraint(equalTo: episode.trailingAnchor, constant: -8),
             arrow.centerYAnchor.constraint(equalTo: episode.centerYAnchor),
-            arrow.heightAnchor.constraint(equalToConstant: 20),
+            arrow.heightAnchor.constraint(equalToConstant: 25),
             arrow.widthAnchor.constraint(equalToConstant: 20),
             nameLabel.trailingAnchor.constraint(equalTo: arrow.leadingAnchor, constant: -8)
         ])
@@ -189,8 +217,6 @@ private extension CharacterViewController {
         
         episode.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-//            episode.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-//            episode.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             episode.heightAnchor.constraint(equalToConstant: 30)
         ])
     }

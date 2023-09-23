@@ -15,18 +15,23 @@ private enum Tables: String {
 }
 
 struct R {
+    private init() {}
     struct Colors {
+        private init() {}
         static let appBackground = UIColor(named: "appBackground")!
         static let appForeground = UIColor(named: "appForeground")!
         static let gray = UIColor(named: "gray")!
         static let lightGray = UIColor(named: "lightGray")
     }
     struct Images {
+        private init() {}
         static let noImage = UIImage(named: "no-image-rick")!
     }
     
     struct Strings {
+        private init() {}
         struct Characters {
+            private init() {}
             private static let tableName = Tables.characters.rawValue
             static let title = NSLocalizedString("list-title", tableName: tableName, bundle: .main, comment: "")
             static let status = NSLocalizedString("character-status", tableName: tableName, comment: "")
@@ -43,6 +48,7 @@ struct R {
         }
         
         struct Genders {
+            private init() {}
             private static let tableName = Tables.genders.rawValue
             static let unknown = NSLocalizedString("unknown", tableName: tableName, comment: "")
             static let female = NSLocalizedString("female", tableName: tableName, comment: "")
@@ -51,12 +57,14 @@ struct R {
         }
         
         struct Status {
+            private init() {}
             private static let tableName = Tables.status.rawValue
             static let unknown = NSLocalizedString("unknown", tableName: tableName, comment: "")
             static let alive = NSLocalizedString("alive", tableName: tableName, comment: "")
             static let dead = NSLocalizedString("dead", tableName: tableName, comment: "")
         }
         struct Species {
+            private init() {}
             private static let tableName = Tables.species.rawValue
             static let human = NSLocalizedString("human", tableName: tableName, comment: "")
             static let cronenberg = NSLocalizedString("cronenberg", tableName: tableName, comment: "")
@@ -71,3 +79,4 @@ struct R {
         }
     }
 }
+

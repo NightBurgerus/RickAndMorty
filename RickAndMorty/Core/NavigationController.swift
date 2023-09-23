@@ -25,7 +25,9 @@ final class NavigationController: UINavigationController {
             ])
         }
         titleLabel!.alpha = 1
-        titleLabel?.text = title
+        titleLabel!.text = title
+        titleLabel!.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        titleLabel!.textColor = R.Colors.appForeground
     }
 
     func setTitleViewWithSearch(configuration: TitleViewConfiguration = .default) {
