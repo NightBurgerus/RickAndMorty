@@ -34,7 +34,6 @@ final class NavigationController: UINavigationController {
     func setTitleViewWithSearch(title: String) {
         titleLabel?.alpha = 0
         if titleView == nil {
-            logger.debug("title view init")
             titleView = TitleView(title: title)
             navigationBar.addSubview(titleView!)
         }
@@ -48,7 +47,6 @@ final class NavigationController: UINavigationController {
             titleView!.topAnchor.constraint(equalTo: navigationBar.topAnchor),
             titleView!.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor)
         ])
-//        titleView!.configureView()
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
