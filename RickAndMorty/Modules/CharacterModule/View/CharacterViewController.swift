@@ -60,11 +60,20 @@ final class CharacterViewController: UIViewController {
         episodesLabel.text = getEpisodes()
         
         setupEpisodes()
+        scrollView.layoutIfNeeded()
         
         scrollView
             .rx
             .contentOffset
             .subscribe(onNext: { [weak self] offset in
+                guard let self = self else { return }
+                if -50...(-1) ~= offset.y {
+                    self.characterImageView.transform = CGAffineTransform(scaleX: 1 - offset.y / 1000, y: 1 - offset.y / 1000)
+                }
+                if offset.y > 0 {
+                    self.characterImageView.transform = CGAffineTransform(scaleX: 1 - offset.y / 5000, y: 1 - offset.y / 2000)
+                }
+                self.characterImageView.alpha = 1 - offset.y / self.characterImageView.frame.height
             })
             .disposed(by: disposeBag)
             
@@ -180,8 +189,8 @@ private extension CharacterViewController {
         
         episode.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            episode.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            episode.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+//            episode.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+//            episode.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             episode.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
