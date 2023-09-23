@@ -15,6 +15,12 @@ private enum Tables: String {
 }
 
 struct R {
+    struct Colors {
+        static let appBackground = UIColor(named: "appBackground")!
+        static let appForeground = UIColor(named: "appForeground")!
+        static let gray = UIColor(named: "gray")!
+        static let lightGray = UIColor(named: "lightGray")
+    }
     struct Images {
         static let noImage = UIImage(named: "no-image-rick")!
     }
