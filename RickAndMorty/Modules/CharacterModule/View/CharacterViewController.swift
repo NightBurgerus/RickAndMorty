@@ -61,7 +61,12 @@ final class CharacterViewController: UIViewController {
         episodesLabel.attributedText = getEpisodes()
         
         setupEpisodes()
-        scrollView.layoutIfNeeded()
+        
+        characterImageView.layer.shadowColor = UIColor.white.cgColor
+        characterImageView.layer.shadowOpacity = 1
+        characterImageView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        characterImageView.layer.shadowRadius = 4.0
+        characterImageView.clipsToBounds = false
         
         scrollView
             .rx

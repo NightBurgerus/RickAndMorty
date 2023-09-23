@@ -37,6 +37,11 @@ final class CharacterCell: UITableViewCell {
         } else {
             characterImageView.image = R.Images.noImage
         }
+        
+        characterImageView.layer.shadowColor = UIColor.white.cgColor
+        characterImageView.layer.shadowOpacity = 0.5
+        characterImageView.layer.shadowRadius = 4.0
+        characterImageView.clipsToBounds = false
     }
     
     private func getStatus(_ character: Character) -> String {
